@@ -49,4 +49,4 @@ jobs:
     - name: Verify API Health
       run: |
         sleep 10
-        curl -f http://localhost:8000/api/docs || exit 1
+        curl -f http://localhost:8000/api/docs || (docker compose logs backend && exit 1)
