@@ -44,7 +44,7 @@ jobs:
       run: docker build -t jansetu-backend:latest -f Dockerfile.backend .
       
     - name: Run Test Compose Stack
-      run: docker-compose up -d
+      run: docker compose up -d
       
     - name: Verify API Health
       run: |
