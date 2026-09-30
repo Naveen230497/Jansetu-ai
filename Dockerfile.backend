@@ -17,7 +17,6 @@ USER jansetu_user
 # Copy installed dependencies and code
 COPY --from=builder /root/.local /home/jansetu_user/.local
 COPY backend/ ./backend/
-COPY .env .
 
 ENV PATH=/home/jansetu_user/.local/bin:$PATH
 ENV ENVIRONMENT=production

@@ -212,6 +212,7 @@ async def stop_simulator():
     global simulator_task
     if simulator_task and not simulator_task.done():
         simulator_task.cancel()
+        simulator_task = None
         return {"status": "Simulator stopped"}
     return {"status": "Simulator not running"}
 
