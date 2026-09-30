@@ -17,6 +17,9 @@ export default function HeatMap() {
     async function fetchMarkers() {
       try {
         const requests = await getRequests();
+        const sortedReqs = [...(requests || [])].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        const newestIds = new Set(sortedReqs.slice(0, 3).map(r => r.id));
+
         const validMarkers = (requests || [])
           .filter(r => r.latitude && r.longitude)
           .map(r => ({
@@ -28,7 +31,8 @@ export default function HeatMap() {
             title: r.translated_text || r.raw_text,
             district: r.location_district,
             state: r.location_state,
-            language: r.language_detected
+            language: r.language_detected,
+            isNew: newestIds.has(r.id)
           }));
         setMarkers(validMarkers);
       } catch (err) {
@@ -38,6 +42,43 @@ export default function HeatMap() {
       }
     }
     fetchMarkers();
+  }, []);
+
+  useEffect(() => {
+    const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const WS_BASE = API_BASE.replace(/^http/, 'ws') + '/ws/live';
+    const ws = new WebSocket(WS_BASE);
+    
+    ws.onmessage = (event) => {
+      try {
+        const msg = JSON.parse(event.data);
+        if (msg.type === 'NEW_REQUEST') {
+          const r = msg.data;
+          if (r.latitude && r.longitude) {
+            setMarkers(prev => [{
+              id: r.id,
+              lat: parseFloat(r.latitude),
+              lng: parseFloat(r.longitude),
+              urgency: r.urgency >= 4 ? 'high' : r.urgency >= 3 ? 'medium' : 'low',
+              category: r.category,
+              title: r.translated_text || r.raw_text,
+              district: r.location_district,
+              state: r.location_state,
+              language: r.language_detected,
+              isNew: true
+            }, ...prev]);
+          }
+        }
+      } catch (e) {
+        console.error("WS error:", e);
+      }
+    };
+    
+    return () => {
+      if(ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) {
+          ws.close();
+      }
+    };
   }, []);
 
   const categories = ['All', ...new Set(markers.map(m => m.category))];
@@ -185,13 +226,24 @@ export default function HeatMap() {
                 position={{lat: marker.lat, lng: marker.lng}}
                 onClick={() => setActiveMarker(activeMarker === marker.id ? null : marker.id)}
               >
-                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: i * 0.05, type: 'spring' }}>
-                  <Pin
-                    background={getPinColor(marker.urgency)}
-                    borderColor={'rgba(255,255,255,0.2)'}
-                    glyphColor={'#fff'}
-                  />
-                </motion.div>
+                <div className="relative flex items-center justify-center cursor-pointer">
+                  {marker.isNew && (
+                    <>
+                      <span className="absolute -inset-3 rounded-full bg-purple-500/50 animate-ping" />
+                      <span className="absolute -inset-2 rounded-full bg-cyan-400/40 animate-pulse blur-sm" />
+                      <span className="absolute -top-7 px-2 py-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[9px] font-black tracking-widest uppercase rounded-full shadow-lg border border-purple-300/40 animate-bounce z-20">
+                        NEW
+                      </span>
+                    </>
+                  )}
+                  <motion.div initial={{ scale: 0 }} animate={{ scale: marker.isNew ? 1.25 : 1 }} transition={{ delay: i * 0.05, type: 'spring' }}>
+                    <Pin
+                      background={marker.isNew ? '#c084fc' : getPinColor(marker.urgency)}
+                      borderColor={marker.isNew ? '#ffffff' : 'rgba(255,255,255,0.2)'}
+                      glyphColor={'#fff'}
+                    />
+                  </motion.div>
+                </div>
               </AdvancedMarker>
             ))}
           </Map>
