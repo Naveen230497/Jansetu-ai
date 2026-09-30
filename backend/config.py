@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "production"
     
     # Server Config
-    HOST: str = "0.0.0.0"
+    HOST: str = "0.0.0.0"  # nosec B104
     PORT: int = 8000
     
     # API Keys & Secrets
