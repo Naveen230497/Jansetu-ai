@@ -65,14 +65,18 @@ export default function Dashboard() {
           }))
         });
 
-        // Set map markers
+        // Set map markers with highlight for newest items
+        const sortedReqs = [...(reqsRes || [])].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        const newestIds = new Set(sortedReqs.slice(0, 3).map(r => r.id));
+
         const validMarkers = (reqsRes || [])
           .filter(r => r.latitude && r.longitude)
           .map(r => ({
             id: r.id,
             lat: r.latitude,
             lng: r.longitude,
-            urgency: r.urgency >= 4 ? 'high' : r.urgency >= 3 ? 'medium' : 'low'
+            urgency: r.urgency >= 4 ? 'high' : r.urgency >= 3 ? 'medium' : 'low',
+            isNew: newestIds.has(r.id)
           }));
         setMapMarkers(validMarkers);
 
@@ -117,12 +121,13 @@ export default function Dashboard() {
           });
 
           if (req.latitude && req.longitude) {
-            setMapMarkers(prev => [...prev, {
+            setMapMarkers(prev => [{
               id: req.id,
               lat: req.latitude,
               lng: req.longitude,
-              urgency: req.urgency >= 4 ? 'high' : req.urgency >= 3 ? 'medium' : 'low'
-            }]);
+              urgency: req.urgency >= 4 ? 'high' : req.urgency >= 3 ? 'medium' : 'low',
+              isNew: true
+            }, ...prev]);
           }
         }
       } catch (e) {
@@ -295,13 +300,24 @@ export default function Dashboard() {
                     key={marker.id || i}
                     position={{ lat: marker.lat, lng: marker.lng }}
                   >
-                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: Math.min(i * 0.05, 1) }}>
-                      <Pin
-                        background={marker.urgency === 'high' ? '#ef4444' : marker.urgency === 'medium' ? '#f59e0b' : '#10b981'}
-                        borderColor={'rgba(255,255,255,0.2)'}
-                        glyphColor={'#fff'}
-                      />
-                    </motion.div>
+                    <div className="relative flex items-center justify-center">
+                      {marker.isNew && (
+                        <>
+                          <span className="absolute -inset-3 rounded-full bg-purple-500/50 animate-ping" />
+                          <span className="absolute -inset-2 rounded-full bg-cyan-400/40 animate-pulse blur-sm" />
+                          <span className="absolute -top-7 px-2 py-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[9px] font-black tracking-widest uppercase rounded-full shadow-lg border border-purple-300/40 animate-bounce z-20">
+                            NEW
+                          </span>
+                        </>
+                      )}
+                      <motion.div initial={{ scale: 0 }} animate={{ scale: marker.isNew ? 1.25 : 1 }} transition={{ delay: Math.min(i * 0.05, 1) }}>
+                        <Pin
+                          background={marker.isNew ? '#c084fc' : marker.urgency === 'high' ? '#ef4444' : marker.urgency === 'medium' ? '#f59e0b' : '#10b981'}
+                          borderColor={marker.isNew ? '#ffffff' : 'rgba(255,255,255,0.2)'}
+                          glyphColor={'#fff'}
+                        />
+                      </motion.div>
+                    </div>
                   </AdvancedMarker>
                 ))}
               </Map>
