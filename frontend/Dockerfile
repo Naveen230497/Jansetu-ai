@@ -9,8 +9,8 @@ RUN npm ci
 
 COPY . .
 ENV VITE_API_URL="https://jansetu-backend-297907968720.us-central1.run.app"
-ENV VITE_GOOGLE_MAPS_API_KEY="AIzaSyCRB80aqXvG6XIEHstEBTzTJmukGRRxmTs"
-
+ARG VITE_GOOGLE_MAPS_API_KEY=""
+ENV VITE_GOOGLE_MAPS_API_KEY=$VITE_GOOGLE_MAPS_API_KEY
 RUN npm run build
 
 FROM nginx:alpine
