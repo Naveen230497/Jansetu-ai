@@ -7,8 +7,19 @@ WORKDIR /app
 COPY backend/requirements.txt .
 RUN pip install --user --no-cache-dir -r requirements.txt
 
-FROM python:3.11-slim as production
+FROM python:3.11-slim-bookworm as production
 WORKDIR /app
+
+# Install system dependencies for WeasyPrint
+RUN apt-get update && apt-get install -y \
+    libpango-1.0-0 \
+    libharfbuzz0b \
+    libpangoft2-1.0-0 \
+    libcairo2 \
+    libffi-dev \
+    libgdk-pixbuf2.0-0 \
+    shared-mime-info \
+    && rm -rf /var/lib/apt/lists/*
 
 # Security: Run as non-root user
 RUN useradd -m jansetu_user
