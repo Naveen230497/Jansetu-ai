@@ -34,7 +34,12 @@ async def lifespan(app: FastAPI):
 from .middleware import enterprise_security_middleware
 from starlette.middleware.base import BaseHTTPMiddleware
 
-app = FastAPI(title="JanSetu AI Backend", lifespan=lifespan)
+app = FastAPI(
+    title="JanSetu AI Backend", 
+    lifespan=lifespan,
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json"
+)
 
 # Enterprise Security Pipeline
 app.add_middleware(BaseHTTPMiddleware, dispatch=enterprise_security_middleware)
