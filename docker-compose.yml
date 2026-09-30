@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # ====================================
+  # 1. CORE BACKEND (FASTAPI)
+  # ====================================
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://jansetu_admin:secure_password_123@db:5432/jansetu_enterprise
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - jansetu_net
+    restart: always
+
+  # ====================================
+  # 2. ENTERPRISE DATABASE (POSTGRESQL)
+  # ====================================
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: jansetu_admin
+      POSTGRES_PASSWORD: secure_password_123
+      POSTGRES_DB: jansetu_enterprise
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jansetu_admin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - jansetu_net
+    restart: always
+
+  # ====================================
+  # 3. MESSAGE BROKER (REDIS)
+  # ====================================
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - jansetu_net
+    restart: always
+
+volumes:
+  pgdata:
+
+networks:
+  jansetu_net:
+    driver: bridge

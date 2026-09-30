@@ -1,0 +1,72 @@
+district_name,state,latitude,longitude,population,infra_index
+Lucknow,Uttar Pradesh,26.8467,80.9462,4589838,0.72
+Kanpur,Uttar Pradesh,26.4499,80.3319,4581268,0.68
+Varanasi,Uttar Pradesh,25.3176,82.9739,3676841,0.65
+Agra,Uttar Pradesh,27.1767,78.0081,4418797,0.66
+Meerut,Uttar Pradesh,28.9845,77.7064,3443689,0.69
+Allahabad,Uttar Pradesh,25.4358,81.8463,5954391,0.67
+Chennai,Tamil Nadu,13.0827,80.2707,4646732,0.85
+Coimbatore,Tamil Nadu,11.0168,76.9558,3458045,0.80
+Madurai,Tamil Nadu,9.9252,78.1198,3038252,0.76
+Tiruchirappalli,Tamil Nadu,10.7905,78.7047,2722290,0.75
+Salem,Tamil Nadu,11.6643,78.1460,3482056,0.72
+Hyderabad,Telangana,17.3850,78.4867,3943323,0.82
+Warangal,Telangana,17.9689,79.5941,3512576,0.68
+Nizamabad,Telangana,18.6715,78.0941,2551335,0.62
+Karimnagar,Telangana,18.4386,79.1288,1005711,0.65
+Bengaluru,Karnataka,12.9716,77.5946,9621551,0.86
+Mysuru,Karnataka,12.2958,76.6394,3001127,0.78
+Hubballi,Karnataka,15.3647,75.1240,1049563,0.70
+Mangaluru,Karnataka,12.9141,74.8560,1897730,0.79
+Belagavi,Karnataka,15.8497,74.4977,4779661,0.68
+Mumbai,Maharashtra,19.0760,72.8777,12442373,0.88
+Pune,Maharashtra,18.5204,73.8567,9429408,0.84
+Nagpur,Maharashtra,21.1458,79.0882,4653570,0.77
+Nashik,Maharashtra,20.0110,73.7903,6107187,0.74
+Aurangabad,Maharashtra,19.8762,75.3433,3701282,0.69
+Ahmedabad,Gujarat,23.0225,72.5714,7045313,0.83
+Surat,Gujarat,21.1702,72.8311,6081322,0.81
+Vadodara,Gujarat,22.3072,73.1812,4165626,0.79
+Rajkot,Gujarat,22.3039,70.8022,3804558,0.75
+Bhavnagar,Gujarat,21.7645,72.1519,2880365,0.71
+Kolkata,West Bengal,22.5726,88.3639,4496694,0.81
+Howrah,West Bengal,22.5958,88.2636,4850029,0.72
+Darjeeling,West Bengal,27.0360,88.2627,1846823,0.60
+Siliguri,West Bengal,26.7271,88.3953,513264,0.68
+Asansol,West Bengal,23.6739,86.9524,2882094,0.70
+Thiruvananthapuram,Kerala,8.5241,76.9366,3301427,0.84
+Kochi,Kerala,9.9312,76.2673,3282388,0.86
+Kozhikode,Kerala,11.2588,75.7804,3086293,0.81
+Thrissur,Kerala,10.5276,76.2144,3121200,0.80
+Kollam,Kerala,8.8932,76.6141,2635375,0.77
+Bhubaneswar,Odisha,20.2961,85.8245,837737,0.76
+Cuttack,Odisha,20.4625,85.8828,2624470,0.70
+Rourkela,Odisha,22.2604,84.8536,310000,0.68
+Brahmapur,Odisha,19.3150,84.7941,356598,0.65
+Ludhiana,Punjab,30.9010,75.8573,3498739,0.77
+Amritsar,Punjab,31.6340,74.8723,2490656,0.74
+Jalandhar,Punjab,31.3260,75.5762,2193590,0.76
+Patiala,Punjab,30.3398,76.3869,1895686,0.72
+Patna,Bihar,25.5941,85.1376,5838465,0.68
+Gaya,Bihar,24.7914,85.0002,4391418,0.58
+Bhagalpur,Bihar,25.2425,86.9842,3037766,0.60
+Muzaffarpur,Bihar,26.1209,85.3647,4801062,0.59
+Bhopal,Madhya Pradesh,23.2599,77.4126,2371061,0.76
+Indore,Madhya Pradesh,22.7196,75.8577,3276697,0.80
+Gwalior,Madhya Pradesh,26.2183,78.1828,2032036,0.71
+Jabalpur,Madhya Pradesh,23.1815,79.9864,2463289,0.73
+Ujjain,Madhya Pradesh,23.1765,75.7885,1986864,0.68
+Jaipur,Rajasthan,26.9124,75.7873,6626178,0.79
+Jodhpur,Rajasthan,26.2389,73.0243,3687165,0.73
+Udaipur,Rajasthan,24.5854,73.7125,3068420,0.71
+Kota,Rajasthan,25.2138,75.8648,1951014,0.72
+Ajmer,Rajasthan,26.4499,74.6399,2583052,0.70
+Visakhapatnam,Andhra Pradesh,17.6868,83.2185,4290589,0.81
+Vijayawada,Andhra Pradesh,16.5062,80.6480,4515000,0.78
+Guntur,Andhra Pradesh,16.3067,80.4365,4887813,0.73
+Nellore,Andhra Pradesh,14.4426,79.9865,2963557,0.70
+Kurnool,Andhra Pradesh,15.8281,78.0373,4053048,0.66
+Gurugram,Haryana,28.4595,77.0266,1514432,0.84
+Faridabad,Haryana,28.4089,77.3178,1809733,0.78
+Panipat,Haryana,29.3909,76.9635,1205437,0.74
+Ambala,Haryana,30.3782,76.7767,1128350,0.75

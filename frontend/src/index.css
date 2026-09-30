@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#030712] text-slate-200 antialiased selection:bg-indigo-500/30 selection:text-white;
+    /* Cinematic Animated Mesh Background */
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.15), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.15), transparent 25%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .premium-glass {
+    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] rounded-2xl relative overflow-hidden;
+  }
+  
+  .premium-glass::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 transition-opacity duration-500 pointer-events-none;
+  }
+  
+  .premium-glass:hover::before {
+    @apply opacity-100;
+  }
+
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400;
+  }
+}
+
+/* Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

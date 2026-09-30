@@ -1,0 +1,26 @@
+# ==========================================
+# ENTERPRISE MULTI-STAGE DOCKERFILE
+# ==========================================
+FROM python:3.11-slim as builder
+
+WORKDIR /app
+COPY backend/requirements.txt .
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+FROM python:3.11-slim as production
+WORKDIR /app
+
+# Security: Run as non-root user
+RUN useradd -m jansetu_user
+USER jansetu_user
+
+# Copy installed dependencies and code
+COPY --from=builder /root/.local /home/jansetu_user/.local
+COPY backend/ ./backend/
+COPY .env .
+
+ENV PATH=/home/jansetu_user/.local/bin:$PATH
+ENV ENVIRONMENT=production
+
+EXPOSE 8000
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]

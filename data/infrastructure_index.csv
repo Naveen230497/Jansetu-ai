@@ -1,0 +1,72 @@
+district_name,state,roads_score,water_score,electricity_score,healthcare_score,education_score,sanitation_score,digital_score
+Lucknow,Uttar Pradesh,0.75,0.68,0.80,0.72,0.70,0.65,0.78
+Kanpur,Uttar Pradesh,0.70,0.62,0.75,0.68,0.69,0.61,0.73
+Varanasi,Uttar Pradesh,0.68,0.65,0.78,0.60,0.65,0.55,0.65
+Agra,Uttar Pradesh,0.72,0.64,0.76,0.63,0.65,0.58,0.62
+Meerut,Uttar Pradesh,0.74,0.69,0.79,0.65,0.71,0.62,0.65
+Allahabad,Uttar Pradesh,0.69,0.63,0.75,0.67,0.72,0.60,0.65
+Chennai,Tamil Nadu,0.88,0.78,0.92,0.89,0.91,0.75,0.85
+Coimbatore,Tamil Nadu,0.84,0.75,0.88,0.82,0.85,0.72,0.76
+Madurai,Tamil Nadu,0.80,0.71,0.85,0.76,0.79,0.68,0.72
+Tiruchirappalli,Tamil Nadu,0.79,0.72,0.82,0.75,0.78,0.69,0.70
+Salem,Tamil Nadu,0.76,0.68,0.80,0.72,0.74,0.65,0.68
+Hyderabad,Telangana,0.85,0.76,0.90,0.84,0.88,0.72,0.81
+Warangal,Telangana,0.74,0.65,0.78,0.68,0.70,0.61,0.60
+Nizamabad,Telangana,0.65,0.58,0.72,0.60,0.62,0.55,0.58
+Karimnagar,Telangana,0.68,0.62,0.75,0.63,0.65,0.58,0.62
+Bengaluru,Karnataka,0.85,0.72,0.92,0.88,0.94,0.75,0.93
+Mysuru,Karnataka,0.82,0.75,0.85,0.79,0.82,0.74,0.71
+Hubballi,Karnataka,0.75,0.68,0.78,0.68,0.72,0.65,0.65
+Mangaluru,Karnataka,0.81,0.76,0.84,0.78,0.81,0.72,0.79
+Belagavi,Karnataka,0.72,0.65,0.76,0.65,0.68,0.62,0.66
+Mumbai,Maharashtra,0.89,0.82,0.95,0.90,0.92,0.80,0.88
+Pune,Maharashtra,0.86,0.78,0.91,0.85,0.88,0.76,0.85
+Nagpur,Maharashtra,0.81,0.74,0.86,0.78,0.80,0.71,0.71
+Nashik,Maharashtra,0.78,0.71,0.82,0.72,0.75,0.68,0.69
+Aurangabad,Maharashtra,0.72,0.65,0.78,0.68,0.70,0.62,0.66
+Ahmedabad,Gujarat,0.86,0.79,0.90,0.82,0.84,0.75,0.83
+Surat,Gujarat,0.84,0.77,0.88,0.80,0.82,0.74,0.82
+Vadodara,Gujarat,0.82,0.75,0.86,0.78,0.80,0.72,0.80
+Rajkot,Gujarat,0.78,0.70,0.84,0.74,0.76,0.68,0.76
+Bhavnagar,Gujarat,0.74,0.65,0.80,0.70,0.72,0.65,0.71
+Kolkata,West Bengal,0.82,0.76,0.88,0.84,0.87,0.70,0.81
+Howrah,West Bengal,0.75,0.68,0.81,0.72,0.75,0.62,0.72
+Darjeeling,West Bengal,0.62,0.55,0.68,0.60,0.64,0.54,0.60
+Siliguri,West Bengal,0.70,0.62,0.75,0.68,0.71,0.61,0.69
+Asansol,West Bengal,0.72,0.65,0.78,0.70,0.72,0.63,0.71
+Thiruvananthapuram,Kerala,0.85,0.80,0.90,0.88,0.92,0.76,0.78
+Kochi,Kerala,0.87,0.81,0.92,0.89,0.93,0.78,0.84
+Kozhikode,Kerala,0.83,0.78,0.88,0.82,0.87,0.74,0.76
+Thrissur,Kerala,0.81,0.76,0.86,0.80,0.85,0.73,0.78
+Kollam,Kerala,0.79,0.74,0.84,0.76,0.82,0.70,0.74
+Bhubaneswar,Odisha,0.78,0.71,0.84,0.75,0.79,0.68,0.77
+Cuttack,Odisha,0.72,0.66,0.78,0.70,0.72,0.64,0.68
+Rourkela,Odisha,0.71,0.64,0.77,0.67,0.70,0.61,0.66
+Brahmapur,Odisha,0.68,0.60,0.74,0.64,0.68,0.58,0.63
+Ludhiana,Punjab,0.80,0.74,0.86,0.75,0.78,0.70,0.76
+Amritsar,Punjab,0.77,0.71,0.84,0.72,0.75,0.68,0.73
+Jalandhar,Punjab,0.79,0.73,0.85,0.74,0.77,0.69,0.75
+Patiala,Punjab,0.75,0.68,0.81,0.70,0.72,0.65,0.71
+Patna,Bihar,0.70,0.64,0.76,0.66,0.70,0.60,0.69
+Gaya,Bihar,0.61,0.54,0.68,0.56,0.60,0.50,0.58
+Bhagalpur,Bihar,0.63,0.56,0.70,0.58,0.62,0.52,0.59
+Muzaffarpur,Bihar,0.62,0.55,0.69,0.57,0.61,0.51,0.58
+Bhopal,Madhya Pradesh,0.79,0.72,0.84,0.75,0.78,0.69,0.76
+Indore,Madhya Pradesh,0.82,0.75,0.87,0.78,0.81,0.75,0.79
+Gwalior,Madhya Pradesh,0.74,0.68,0.79,0.70,0.73,0.64,0.71
+Jabalpur,Madhya Pradesh,0.76,0.70,0.81,0.72,0.74,0.66,0.73
+Ujjain,Madhya Pradesh,0.71,0.65,0.77,0.67,0.70,0.62,0.66
+Jaipur,Rajasthan,0.82,0.74,0.86,0.78,0.81,0.71,0.79
+Jodhpur,Rajasthan,0.76,0.68,0.81,0.72,0.74,0.65,0.72
+Udaipur,Rajasthan,0.74,0.66,0.79,0.70,0.73,0.64,0.71
+Kota,Rajasthan,0.75,0.67,0.80,0.71,0.74,0.65,0.71
+Ajmer,Rajasthan,0.72,0.64,0.77,0.68,0.71,0.62,0.68
+Visakhapatnam,Andhra Pradesh,0.84,0.76,0.88,0.80,0.82,0.73,0.84
+Vijayawada,Andhra Pradesh,0.81,0.74,0.85,0.77,0.80,0.71,0.81
+Guntur,Andhra Pradesh,0.76,0.69,0.81,0.72,0.75,0.67,0.74
+Nellore,Andhra Pradesh,0.73,0.66,0.78,0.69,0.72,0.64,0.71
+Kurnool,Andhra Pradesh,0.69,0.62,0.75,0.65,0.68,0.60,0.65
+Gurugram,Haryana,0.88,0.79,0.92,0.84,0.86,0.76,0.89
+Faridabad,Haryana,0.81,0.73,0.86,0.76,0.79,0.70,0.79
+Panipat,Haryana,0.77,0.69,0.82,0.73,0.75,0.67,0.73
+Ambala,Haryana,0.78,0.70,0.83,0.74,0.76,0.68,0.74
