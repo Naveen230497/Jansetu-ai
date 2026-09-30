@@ -13,6 +13,7 @@ services:
     environment:
       - DATABASE_URL=postgresql+asyncpg://jansetu_admin:secure_password_123@db:5432/jansetu_enterprise
       - PORT=8000
+      - GEMINI_API_KEY=dummy_key_for_testing
     depends_on:
       db:
         condition: service_healthy
