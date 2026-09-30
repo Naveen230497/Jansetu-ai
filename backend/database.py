@@ -1,7 +1,7 @@
 import aiosqlite
 import os
 import csv
-from datetime import datetime
+from datetime import datetime, timezone
 from .models import CitizenRequest, DistrictPriority
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "jansetu.db")
@@ -104,7 +104,7 @@ async def load_synthetic_data(db):
             req.get('sentiment', 'NEGATIVE'),
             req.get('latitude'),
             req.get('longitude'),
-            req.get('timestamp', datetime.utcnow().isoformat()),
+            req.get('timestamp', datetime.now(timezone.utc).isoformat()),
             req.get('source', 'TELEGRAM'),
             req.get('data_type', 'SYNTHETIC')
         ))

@@ -42,7 +42,7 @@ app.add_middleware(BaseHTTPMiddleware, dispatch=enterprise_security_middleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

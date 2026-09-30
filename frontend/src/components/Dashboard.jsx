@@ -6,6 +6,18 @@ import { APIProvider, Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps
 import { getStats, getPriorities, getRequests } from '../services/api';
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const WS_BASE = API_BASE.replace(/^http/, 'ws') + '/ws/live';
+
+const formatTime = (ts) => {
+  if (!ts) return new Date().toLocaleTimeString();
+  let str = String(ts);
+  if (!str.endsWith('Z') && !str.includes('+')) {
+    str += 'Z';
+  }
+  const date = new Date(str);
+  return isNaN(date.getTime()) ? new Date().toLocaleTimeString() : date.toLocaleTimeString();
+};
 
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
 
@@ -48,7 +60,7 @@ export default function Dashboard() {
             text: r.translated_text || r.raw_text,
             category: r.category,
             urgency: r.urgency >= 4 ? 'High' : r.urgency >= 3 ? 'Medium' : 'Low',
-            time: r.timestamp ? new Date(r.timestamp).toLocaleTimeString() : 'Just now',
+            time: formatTime(r.timestamp),
             language: r.language_detected
           }))
         });
@@ -74,7 +86,7 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8000/ws/live');
+    const ws = new WebSocket(WS_BASE);
     
     ws.onmessage = (event) => {
       try {
@@ -91,7 +103,7 @@ export default function Dashboard() {
               text: req.translated_text || req.raw_text,
               category: req.category,
               urgency: req.urgency >= 4 ? 'High' : req.urgency >= 3 ? 'Medium' : 'Low',
-              time: new Date().toLocaleTimeString(),
+              time: formatTime(req.timestamp),
               language: req.language_detected
             };
             
@@ -124,7 +136,7 @@ export default function Dashboard() {
   const toggleSimulator = async () => {
     try {
       const endpoint = simulatorRunning ? '/api/stop-simulator' : '/api/start-simulator';
-      await fetch(`http://localhost:8000${endpoint}`, { method: 'POST' });
+      await fetch(`${API_BASE}${endpoint}`, { method: 'POST' });
       setSimulatorRunning(!simulatorRunning);
     } catch (e) {
       console.error(e);

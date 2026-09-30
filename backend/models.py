@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from enum import Enum
 from typing import List, Dict, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 class CategoryEnum(str, Enum):
     ROADS = "ROADS"
@@ -37,7 +37,7 @@ class CitizenRequest(BaseModel):
     sentiment: SentimentEnum
     latitude: Optional[float]
     longitude: Optional[float]
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     source: SourceEnum
     data_type: DataTypeEnum = DataTypeEnum.REAL
 

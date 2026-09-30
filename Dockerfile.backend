@@ -15,11 +15,11 @@ RUN useradd -m jansetu_user
 USER jansetu_user
 
 # Copy installed dependencies and code
-COPY --from=builder /root/.local /home/jansetu_user/.local
-COPY backend/ ./backend/
+COPY --from=builder --chown=jansetu_user:jansetu_user /root/.local /home/jansetu_user/.local
+COPY --chown=jansetu_user:jansetu_user backend/ ./backend/
 
 ENV PATH=/home/jansetu_user/.local/bin:$PATH
 ENV ENVIRONMENT=production
 
-EXPOSE 8000
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+EXPOSE 8080
+CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-8080} --workers 4"]

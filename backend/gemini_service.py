@@ -26,7 +26,7 @@ Given the input text (which may be in any Indian language), respond ONLY with a 
 def classify_text(text: str) -> GeminiClassification:
     try:
         response = client.models.generate_content(
-            model='gemini-3.8-flash',
+            model='gemini-1.5-flash',
             contents=text,
             config=types.GenerateContentConfig(
                 system_instruction=SYSTEM_PROMPT,
@@ -65,7 +65,7 @@ def classify_text(text: str) -> GeminiClassification:
 def classify_audio(audio_bytes: bytes, mime_type: str) -> GeminiClassification:
     try:
         response = client.models.generate_content(
-            model='gemini-3.8-flash',
+            model='gemini-1.5-flash',
             contents=[
                 types.Part.from_bytes(data=audio_bytes, mime_type=mime_type),
                 "Process this audio recording according to your instructions."
@@ -98,7 +98,7 @@ def generate_policy_brief(district_data: list[DistrictPriority]) -> str:
         
     try:
         response = client.models.generate_content(
-            model='gemini-3.8-flash',
+            model='gemini-1.5-flash',
             contents=prompt
         )
         return response.text
